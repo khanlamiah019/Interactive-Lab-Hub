@@ -84,9 +84,24 @@ drew. Do real research. You are looking less for trivia than for the *shape of
 the interaction*:
 
 - What inputs are available to the user? What responses does the work give?
+  PixMOB LED wristbands are famous for being given out at a concert. From an audience perspective, there is no input. The input for the PixMOB LED Wristband is usually infrared (IR) or radio transmitter operated by the show's lighting team, which is aligned to the beat of the song playing. The wristband's response is to light up, which can include solid colors, fades, strobes, and chases, coordinated across thousands of wearers to form waves, gradients, or images across the crowd (ex: hearts during Taylor swift's eras tour)
 - Who is present, and how does the piece color the relationships between them?
+  There are three parties present: the performer, the audience (person wearing the wristband), and the lighting crew controlling the DMX/IR rig. According to the songs the performer does, the lighting crew controls the way the lights are colored on the wristband depicting on the audience. 
 - What is the piece famous for? What are its strengths and its weaknesses?
+PixMob became widely known through Coldplay's stadium tours and Taylor Swift's Eras Tour, where moments where these lights created patterns individual to the performer went viral on social media.
 
+Strengths:
+- pretty visuals, often one that is used as a storytelling device for the song
+- low cost per unit
+- no setup burden on attendees, so extremely accessible.
+- a great way to show community within the concert!
+
+Weaknesses: 
+- environmental waste if not taken care of properly
+- may have reliability issues (dead bands, missed cues in bad sight lines, nosebleeds seats getting less of the effect)
+- some people have tried hacking into these wristbands
+- some people say it makes them feel like "set dressing" 
+  
   Sometimes the details of how the interaction worked are lost in history. Try filling it in with your imagination!
 
 **Describe your masterwork here, in your own words. What is the core interaction
