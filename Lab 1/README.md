@@ -138,10 +138,13 @@ is doing what you've scripted — a person can wave a flashlight, or you can nar
 it aloud.
 
 **Are there things that seemed better on paper than when acted out?**
+It was harder to act out more exciting features of the LED band, such as the creation of shapes through the crowd lighting. While costuming our device gave a snippet of how this may work (in our context: the dress of Olivia Rodrigo lighting up), in practice, this would be seen through crowds. 
 
 **Did new ideas about the piece surface once you were on your feet?**
+One new idea that surfaced was making the prototype feel more group based (as seen by a very special second party within our video). One of the most important reasons why the PixMob LED Wristband went viral is because it created a sense of community, while pushing storytelling in music. Because of this, it was crucial that we showed an interaction of our device to show the fanbase itself, which can also be considered an interaction of this device. 
 
 **Are there key moments in the interaction where things could go in a different direction?**
+We can take it in a different direction by adjusting the script, or song. Currently, our interaction is based on "Purple" by Olivia Rodrigo. This plays into the color changing aspect of the LED light through both the lyrics, and the dramatic beat drops. However, choosing a different song genre can severely change the visuals/light changing speed of the our prototype. Finetuning the script can also make the interaction easier to understand by someone who does not know the mechanisms of our prototype. 
 Iterate your storyboards to capture key non-sequential aspects of the interaction. 
 
 ## Part C. Prototype the Light (light first!)
