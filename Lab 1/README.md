@@ -107,6 +107,18 @@ Weaknesses:
 **Describe your masterwork here, in your own words. What is the core interaction
 someone would recognize it by?**
 
+   Our interactive device is the PixMob Wave Wristband, primarily used in concert or performance settings, which was initially developed in 2010 by the Montreal-based company Eski Inc., which later renamed itself to PixMob (Waite). This innovation was co-founded by Vincent Leclerc, the Chief Technology Officer, and Martin Michaud, CEO, with the vision of turning concert audiences into interactive light displays (“Coldplay, Music of the Spheres”). However, the history of these wristbands span further, with the initial concept of the Wristband being originally inspired by the 90’s Kpop Lightsticks within the crowd, which were often customized to each group’s themes and songs (“How Concert LED Wristbands Work”). Afterwards, at the 2005 Glastonbury Festival, entrepreneur Jason Regler watched Coldplay perform “Fix You,” which inspired the fan to invent the glowing LED Xylobands, which the band later debuted on tour in 2011 (Regler). 
+	The Xylobands relied primarily on Radio Frequency (RF) signals broadcast from transmitters set up around a venue. In short, they divide crows into general zones based on radio signal strength and transmitter positioning. While Xylobands quickly became a fan favorite interactive tool, they were traditionally built with heavier plastic housings, thus, recycling these devices was challenging. PixMob is the more modern iteration of this concept, using infrared (IR) technology alongside RF. When utilizing these wristbands across large audiences, specifically in a concert venue, it can “paint” specific areas of a crowd using infrared moving-head lights, allowing for precise, pixel-inspired graphic patterns (Waite). The patterns and colors specifically alternate between different songs, or specific beat drops, making the concert more engaging to viewers, and aesthetically pleasing (“IR Controlled Concert LED Wristband”). Although debate remains regarding the overall environmental footprint of electronic wearable novelties, PixMob has evolved toward lighter and more eco-conscious designs, utilizing more sustainable plastics and fabrics.
+	Multiple artists have now officially adopted PixMob wristbands during their tours, famously Coldplay, and more recently Taylor Swift’s Eras Tour, where multiple instances of the device’s usage went viral on social media. For example, during the performance of Taylor Swift’s Lover, the wristbands turned patterns of pink hearts, depicting the themes of the song. Thus, this illustrates the root of PixMob’s purpose: a storytelling device, uniting the pleasure of music with the fanbase. 
+
+References: 
+Regler, Jason. “Interview: Xylobands Inventor Jason Regler.” Coldplay, 2 Feb. 2012, www.coldplay.com/interview-xylobands-inventor-jason-regler/.
+“Coldplay - Music of the Spheres World Tour.” PixMob, pixmob.com/projects/coldplay.  Accessed 29 Aug. 2026.
+Waite, Jacob. “PixMob Reflects on Two Decades of Shapeshifting Innovation.” TPi, 8 May 2026, www.tpimagazine.com/pixmob-reflects-on-two-decades-of-shapeshifting-innovation/.
+“How Concert LED Wristbands Work | WSJ Tech Behind” YouTube, uploaded by The Wall Street Journal, www.youtube.com/watch?v=GCsmZA08oD8. Accessed 29 Aug. 2026.
+“IR Controlled Concert LED Wristband.” YouTube, uploaded by bigclivedotcom, www.youtube.com/watch?v=tkHmD0BZK04. Accessed 29 Aug. 2026.
+
+
 ## Part A. Plan
 
 For your masterwork, reconstruct the interaction as a scene:
