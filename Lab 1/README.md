@@ -185,6 +185,7 @@ and calm for a bedroom?
 **Include sketches/photos of what your device might look like here.**
 
 **What concerns or opportunities shaped the way you designed its look?**
+While the LED wristband is worn by every individual, at the end, the interaction is made by the entire audience and the lighting designer. It is a joined experience that demonstrates the fanbase by, for example, creating patterns and shapes throughout the crowd. We wanted to incorporate that community-feeling through our design, hence we created an example of how it might be portrayed in "Purple"-Olivia Rodrigo, with the shape of the singer's dress from the album cover changing colors based on the beats and tunes. While we were concerned that the changing colors would be mostly blocked, we solved this by adjusting the photo correctly. At the end, we believe that it increased the storytelling element of the song itself, which is also what the wristband is great for. 
 
 ## Part F. Record
 
