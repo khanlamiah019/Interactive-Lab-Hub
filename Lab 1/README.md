@@ -178,7 +178,6 @@ week's business.
 
 
 
-
 ## Part D. Wizard the Device
 
 Set up a "wizard" arrangement so one person can secretly drive the light while
