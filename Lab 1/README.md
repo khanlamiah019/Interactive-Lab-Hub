@@ -1,10 +1,8 @@
 # Recreating the Masters of Interactive Light
 
-_This project is to be done in teams of 2._
-
 **Lamiah Khan & Rawisara Chairat**
 
-**THE MASTERWORK YOU DREW FROM THE HAT: PIXMOB LED Wristband**
+**PIXMOB LED Wristband**
 
 ---
 
@@ -190,7 +188,10 @@ Think about the world your device lives in: could that environment overheat it?
 Is water a danger? Does it need to be loud and bright for an emergency, or quiet
 and calm for a bedroom?
 
-**Include sketches/photos of what your device might look like here.**
+**Photos of what our device might look like:**
+
+<img width="507" height="549" alt="Screenshot 2026-08-30 at 1 36 38 AM" src="https://github.com/user-attachments/assets/bb8cb11b-7005-413e-ad85-0d744c774268" />
+
 
 **What concerns or opportunities shaped the way you designed its look?**
 While the LED wristband is worn by every individual, at the end, the interaction is made by the entire audience and the lighting designer. It is a joined experience that demonstrates the fanbase by, for example, creating patterns and shapes throughout the crowd. We wanted to incorporate that community-feeling through our design, hence we created an example of how it might be portrayed in "Purple"-Olivia Rodrigo, with the shape of the singer's dress from the album cover changing colors based on the beats and tunes. While we were concerned that the changing colors would be mostly blocked, we solved this by adjusting the photo correctly. At the end, we believe that it increased the storytelling element of the song itself, which is also what the wristband is great for. 
