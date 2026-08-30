@@ -129,13 +129,20 @@ For our masterwork, we reconstruct the interaction as follows:
  	- Artists are creating a memorable performance
 	- Event staff are making sure that everyone got the wristband and that the lighting effects are working.
 
-#### Here is the storyboard:
+#### Here are 3 interated storyboards:
+- Storyboard 1:
 
 <img width="2461" height="1000" alt="IMG_6069" src="https://github.com/user-attachments/assets/6f208d47-48cb-40f1-9fc3-677556a3e71c" />
+<br> </br>
+
+- Storyboard 2:
+<img width="3086" height="2182" alt="IMG_6076" src="https://github.com/user-attachments/assets/cb2d10d0-945c-47f6-bd2e-3b30c882718b" />
+
+- Storyboard 3:
+<img width="3086" height="2182" alt="IMG_6077" src="https://github.com/user-attachments/assets/c8102c8e-7b92-4757-93cf-c4be7fb8d7ee" />
 
 
-
-From the storyboard, we will prototype a simple wristband that would change color during a song.
+From all the storyboards, we will prototype a simple wristband that would change color during a song and could be controlled by a laptop.
 
 ## Part B. Act out the Interaction
 
