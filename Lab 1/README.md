@@ -121,27 +121,23 @@ Waite, Jacob. “PixMob Reflects on Two Decades of Shapeshifting Innovation.” 
 
 ## Part A. Plan
 
-For your masterwork, reconstruct the interaction as a scene:
+For our masterwork, we reconstruct the interaction as follows:
 
-- **Setting:** Where and when does this interaction happen? (a jungle, a kitchen,
-  a spaceship corridor, a nightclub, a harbor at night)
-- **Players:** Who is involved? Who else is present? Think through everyone in
-  the setting, not just the primary user.
-- **Activity:** What is happening between the players and the light?
-- **Goals:** What is each player trying to do?
+- **Setting:** A concert
+- **Players:** Moo-moo, other concert attendee, artist and event staff
+- **Activity:** Moo-moo watches the performance while her wristband changes colors and patterns in sync with the music and the rest of the audience's wristbands
+- **Goals:**
+	- Moo-moo and audience feel engaged with the performance as if they are part of the show
+ 	- Artists are creating a memorable performance
+	- Event staff are making sure that everyone got the wristband and that the lighting effects are working.
 
-**Describe your setting, players, activity, and goals here.**
+#### Here is the storyboard:
 
-Now **sketch a 3 storyboards** of the interaction you are recreating. (The number may depend on the thing you drew, but stretch your thinking!) They
-don't need to be beautiful, but they must capture and communicate not only the behavior of the light, but how it affects
-and the people around it. If you're new to storyboarding, read
-[this explanation](https://www.nngroup.com/articles/storyboards-visualize-ideas/).
+<img width="2461" height="1000" alt="IMG_6069" src="https://github.com/user-attachments/assets/6f208d47-48cb-40f1-9fc3-677556a3e71c" />
 
-**Include pictures of your storyboards here.**
 
-Use the storyboards to decide what interaction to prototype.
 
-**Summarize the feedback you got here.**
+From the storyboard, we will prototype a simple wristband that would change color during a song.
 
 ## Part B. Act out the Interaction
 
@@ -205,11 +201,14 @@ While the LED wristband is worn by every individual, at the end, the interaction
 the top of this lab: a viewer who knows the piece should recognize it; a viewer
 who doesn't should come away understanding what it's famous for. How might you illustrate the non-sequential aspects of the interaction in the sketch?
 
-**Include your video here.**
 
-**Please indicate who you collaborated with on this lab.** Be generous in
-acknowledging their contributions, and credit any other influences (YouTube,
-Github, Twitter, a friend who lent you a lamp) that informed your recreation.
+
+
+
+https://github.com/user-attachments/assets/6b5337ab-4d29-4fca-8608-b6de443153f4
+
+
+This lab is done by Lamiah Khan and Rawisara Chairat. We would like to thank the MakerLab staff who let us borrow the box cutter and tape as well as the cow in the Masters' Studio who plays such a crucial role in our sketch.
 
 ---
 
