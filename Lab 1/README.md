@@ -176,6 +176,9 @@ masterwork should you consider layering in a second modality (sound, vibration,
 motion). If in doubt, keep polishing the light. The other modalities are next
 week's business.
 
+
+
+
 ## Part D. Wizard the Device
 
 Set up a "wizard" arrangement so one person can secretly drive the light while
