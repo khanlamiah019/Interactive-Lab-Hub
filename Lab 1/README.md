@@ -176,6 +176,7 @@ masterwork should you consider layering in a second modality (sound, vibration,
 motion). If in doubt, keep polishing the light. The other modalities are next
 week's business.
 
+https://github.com/user-attachments/assets/c4aa18f7-8037-4706-a482-985033e79198
 
 
 ## Part D. Wizard the Device
