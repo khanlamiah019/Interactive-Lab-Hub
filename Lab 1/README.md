@@ -247,6 +247,8 @@ wasn't clear.
 
 [Jessica Chon] I purposely didn't read anything about the project to see if I understood what the light project inspiration was. Initially, I was a bit confused whether this was meant for the arm or face because of the different locations the screen was on in the video. I also found it a bit confusing that the wristbands were meant to sync just solely to the music because I saw the Olivia Rodrigo on the screen, and it looked like her clothes were changing purple to match the song. So I assumed it was some device for the artists to make the fans more engaged during concerts through their outfits, since that helps with immersion. I did really like was how immersive the sample video was because it helped make it really clear what the setting expectations and context I'd find this product was in. I think you also did a strong job with syncing the songs and color switches together, which made it very clear that this item reacts to music. https://github.com/chonjessica23/Interactive-Lab-Hub/tree/Fall2026/Lab%201
 
+[Afroza] I think you guys demonstrated the idea really well, and the concert background fits perfectly. Thats really smart.  Maybe you could change the wristband color a few more times since it currently changes only twice. That would make the light show feel more active and exciting. 
+
 ## Remix, Update, or Critique the Master
 
 Now that you understand your masterwork from the inside, respond to it. Do the
