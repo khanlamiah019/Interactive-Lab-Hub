@@ -241,6 +241,12 @@ wasn't clear.
 **Who were the other groups you kibitzed with? Add links to their project pages here.**
 **Summarize the feedback you got from your partners here.**
 
+[Yujing Zhou & Youssef Hassan] Your team did a great job by making it very easy to identify what your object was by using a concert background, background music and attaching your phone to your wrist while controlling the light from far away. I think this was great and I have no criticism personally! https://github.com/Youssef-Chip/Interactive-Lab-Hub/tree/Fall2026/Lab%201
+
+[Yuni Park] It’s very clear how to use the Pixmob LED Wristband through the storyboard. It not only highlights how the user sets and actively uses the device, but also why it gained so much popularity (the fact that they can sync with the song and share their excitement with the crowd) The iteration of the storyboard clearly shows how you guys thought through each frame. The recordings and the storyboard both set a very nice setting/background, giving the readers a clear sense of when the device is used. https://github.com/jUSTbEarOCk/Interactive-Lab-Hub/blob/Fall2026/Lab%201/README.md
+
+[Jessica Chon] I purposely didn't read anything about the project to see if I understood what the light project inspiration was. Initially, I was a bit confused whether this was meant for the arm or face because of the different locations the screen was on in the video. I also found it a bit confusing that the wristbands were meant to sync just solely to the music because I saw the Olivia Rodrigo on the screen, and it looked like her clothes were changing purple to match the song. So I assumed it was some device for the artists to make the fans more engaged during concerts through their outfits, since that helps with immersion. I did really like was how immersive the sample video was because it helped make it really clear what the setting expectations and context I'd find this product was in. I think you also did a strong job with syncing the songs and color switches together, which made it very clear that this item reacts to music. https://github.com/chonjessica23/Interactive-Lab-Hub/tree/Fall2026/Lab%201
+
 ## Remix, Update, or Critique the Master
 
 Now that you understand your masterwork from the inside, respond to it. Do the
