@@ -279,9 +279,10 @@ prototype are great too.**
 
 Based on the feedback we received, we focused on making the PIXMOB wristband feel more dynamic and interactive. Several groups suggested that we make the lights change more frequently and follow the rhythm of the music. In response, we updated our recreation so that the wristband changes colors and patterns in sync with the beat, making the light show feel more active even when viewed without sound.
 
-We also wanted to push the interaction beyond simply reacting to music. We added a new gesture-based interaction using hand tracking. The computer tracks the user's finger/hand pose and recognizes different gestures, which are then translated into shapes displayed on the wristband. For example, when the user forms a heart with their hand, the system recognizes the gesture and displays a heart shape on the wristband.
+We also wanted to push the interaction beyond simply reacting to music. We added a new gesture-based interaction using hand tracking. The computer’s webcam tracks the user's finger/hand pose and recognizes different gestures, which are then translated into shapes displayed on the wristband. This was done through Google’s computer vision package MediaPipe. For example, when the user forms a heart with their hand, the system recognizes the gesture and displays a heart shape on the wristband. This also solved the confusion one of the teams had with our previous dress costume, as it made the shapes more generalized. 
 
 Through this iteration, we transformed the wristband from a device that simply reacts to music into an interactive wearable that responds to both **sound and the user's physical gestures**.
+Once again, this tells another story of the wristband’s interaction: the artist and the listeners. 
 
 **Here is the final demo of our PIXMOB Wristband 2.0:**
 
