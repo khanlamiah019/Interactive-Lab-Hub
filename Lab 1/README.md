@@ -203,9 +203,9 @@ Is water a danger? Does it need to be loud and bright for an emergency, or quiet
 and calm for a bedroom?
 
 **Photos of what our device might look like:**
-
+<p align="center">
 <img width="507" height="549" alt="Screenshot 2026-08-30 at 1 36 38 AM" src="https://github.com/user-attachments/assets/bb8cb11b-7005-413e-ad85-0d744c774268" />
-
+</p>
 
 **What concerns or opportunities shaped the way you designed its look?**
 While the LED wristband is worn by every individual, at the end, the interaction is made by the entire audience and the lighting designer. It is a joined experience that demonstrates the fanbase by, for example, creating patterns and shapes throughout the crowd. We wanted to incorporate that community-feeling through our design, hence we created an example of how it might be portrayed in "Purple"-Olivia Rodrigo, with the shape of the singer's dress from the album cover changing colors based on the beats and tunes. While we were concerned that the changing colors would be mostly blocked, we solved this by adjusting the photo correctly. At the end, we believe that it increased the storytelling element of the song itself, which is also what the wristband is great for. 
@@ -284,7 +284,26 @@ We also wanted to push the interaction beyond simply reacting to music. We added
 Through this iteration, we transformed the wristband from a device that simply reacts to music into an interactive wearable that responds to both **sound and the user's physical gestures**.
 Once again, this tells another story of the wristband’s interaction: the artist and the listeners. 
 
-**Here is the final demo of our PIXMOB Wristband 2.0:**
+### **Development Process**
+**Step 1:** Testing hand gesture recognition on a laptop
+First, we just want to see if the gesture-based interaction was feasible. We used MediaPipe's Hand Landmarker to track hand landmarks in real time and confirmed that gestures such as forming a heart with both hands could be detected and mapped to a corresponding visual icon on the screen.
+<p align="center">
+<img width="410" height="479" alt="9EB8FE7C-2121-4672-8F5F-8A7F4EE6BC12_1_102_o" src="https://github.com/user-attachments/assets/7baf9ce3-9ecd-4160-b44d-1829b58211cb" />
+</p>
+
+**Step 2:** Integrating the new feature with the wristband
+Once we knew that the gesture detection worked perfectly, we integrated it into the rest of the system. The laptop handles the camera input, audio analysis, and gesture classification, while the detected gesture is converted into a simple result like a color and shape and broadcast to the phone, which serves as the PIXMOB wristband display.
+
+https://github.com/user-attachments/assets/d56765a0-241d-4c60-87c1-df836f92f641
+
+
+### **Revise storyboard**
+<img width="2903" height="2041" alt="IMG_6263" src="https://github.com/user-attachments/assets/45f93701-c734-46bd-aae1-7a8f473af9ce" />
+<img width="2903" height="931" alt="IMG_6264" src="https://github.com/user-attachments/assets/4ea010f9-ba0a-49c1-86c2-b87e2926295f" />
+
+
+
+### **Here is the final demo of our PIXMOB Wristband 2.0:**
 
 https://github.com/user-attachments/assets/76daba51-c8b8-49a4-8c90-4e9aadde26fc
 
