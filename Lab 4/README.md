@@ -17,12 +17,17 @@
 ---
 
 ## Lab Overview
-Team: <canvas group name>  
-Members: Full Name (netid, github-handle), ...  
-Project name: <name>
+**Team:** A little confused on this but it will be submitted under Rawisara Chairat's canvas   <br>
+**Members:** Rawisara Chairat (rc2239, kmkluaymaii), Lamiah Khan (ltk38, khanlamiah019), Afroza Aktar (aa2995, Afrozaktar), Xiaoxi Xu (xx373, xuxx21) <br>
+**Project name:** Bown Appétit
 
+
+<details>
+<summary><strong>Lab overview instructions</strong> (click to expand)</summary>
 
 For lab this week, we focus on both sensing and actuation, bringing new modes of input and output into your devices, while also prototyping the physical structure and overall look of the device. You will consider how the physical form supports sensing and actuation, and how these elements come together to shape the interaction and aesthetics of the device.
+
+</details>
 
 ---
 
@@ -45,6 +50,9 @@ F) [Final Documentation](#part-f)
 ## Part 1 Lab Preparation
 
 ---
+
+<details>
+<summary><strong>Lab preparation, setup & references</strong> (click to expand)</summary>
 
 ### Get the latest content:
 As always, pull updates from the class Interactive-Lab-Hub to both your Pi and your own GitHub repo. As we discussed in the class, there are 3 ways you can do so:
@@ -120,54 +128,58 @@ Option 3: (preferred) use the Github.com interface to update the changes.
 
 * [Gear Template Generator](https://woodgears.ca/gear_cutting/template.html) can help you prototype simple gear mechanisms for translating servo motion into physical movement.
 
+</details>
+
 
 ---
 
 ### Part A
 ### Capacitive Sensing, a.k.a. Human-Twizzler Interaction 
 
-We want to introduce you to the [capacitive sensor](https://learn.adafruit.com/adafruit-mpr121-gator) in your kit. It's one of the most flexible input devices we are able to provide. At boot, it measures the capacitance on each of the 12 contacts. Whenever that capacitance changes, it considers it a user touch. You can attach any conductive material. In your kit, you have copper tape that will work well, but don't limit yourself! In the example below, we use Twizzlers--you should pick your own objects.
+We connected the MPR121 capacitive sensor to the Raspberry Pi using a Qwiic connection. We attached two conductive objects to touch pads 6 and 10 using alligator clips. When we touched either object, the Python program detected the change in capacitance and printed Pad 6 touched! or Pad 10 touched! in the terminal. This showed how ordinary objects can be used as touch-sensitive controls. We have attached image of terminal and physical setup below:
 
+***Physical Setup***
 
-<p float="left">
-<img src="https://cdn-learn.adafruit.com/guides/cropped_images/000/003/226/medium640/MPR121_top_angle.jpg?1609282424" height="150" />
- 
-</p>
-
-Plug in the capacitive sensor board with the QWIIC connector. Connect your Twizzlers with either the copper tape or the alligator clips (the clips work better). Install the latest requirements from your working virtual environment:
-
-These Twizzlers are connected to pads 6 and 10. When you run the code and touch a Twizzler, the terminal will print out the following
-
-```
-(circuitpython) pi@ixe00:~/Interactive-Lab-Hub/Lab 4 $ python cap_test.py 
-Twizzler 10 touched!
-Twizzler 6 touched!
-```
+<img width="1600" height="1034" alt="image" src="https://github.com/user-attachments/assets/0df3c513-ce2c-45ab-9367-7f2817f399f9" />
 
 ---
+***cap_test.py***
+
+<img width="752" height="276" alt="Screenshot (88)" src="https://github.com/user-attachments/assets/fbc7d42a-c443-4844-8990-c2a6020a8a8b" />
+
 
 ### Part B
 ### More sensors
 
 #### Light/Proximity/Gesture sensor (APDS-9960)
 
-We here want you to get to know this awesome sensor [Adafruit APDS-9960](https://www.adafruit.com/product/3595). It is capable of sensing proximity, light (also RGB), and gesture! 
- 
-<img src="https://cdn-shop.adafruit.com/970x728/3595-06.jpg" width=200>
- 
+We connected the APDS-9960 sensor to the Raspberry Pi using a Qwiic connector. We ran proximity_test.py to measure how close an object was, gesture_test.py to detect hand movements such as up, down, left, and right, and color_test.py to read RGB and ambient light values. We attached screenshots of the terminal outputs and photos of the physical sensor setup.
 
-Connect it to your pi with Qwiic connector and try running the three example scripts individually to see what the sensor is capable of doing!
+***Physical Setup***
 
-```
-(circuitpython) pi@ixe00:~/Interactive-Lab-Hub/Lab 4 $ python proximity_test.py
-...
-(circuitpython) pi@ixe00:~/Interactive-Lab-Hub/Lab 4 $ python gesture_test.py
-...
-(circuitpython) pi@ixe00:~/Interactive-Lab-Hub/Lab 4 $ python color_test.py
-...
-```
+<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/96e2c277-5689-4734-8b09-c4395d28e7c0" />
 
-You can go the the [Adafruit GitHub Page](https://github.com/adafruit/Adafruit_CircuitPython_APDS9960) to see more examples for this sensor!
+
+***python proximity_test.py***
+
+<img width="792" height="478" alt="Screenshot (93)" src="https://github.com/user-attachments/assets/57f266f6-08bf-4f54-b084-237e1a8c7af2" />
+
+
+
+***python gesture_test.py***
+
+<img width="773" height="453" alt="Screenshot (102)" src="https://github.com/user-attachments/assets/b2e4fd9d-dc98-4579-86b9-d2be008c8dbe" />
+
+
+
+***python color_test.py***
+
+<img width="764" height="764" alt="Screenshot (106)" src="https://github.com/user-attachments/assets/ae0998f6-68d6-4d5c-b4f9-4f0164f3693d" />
+
+
+
+<details>
+<summary><strong>Rotary Encoder lab instructions</strong> (click to expand)</summary>
 
 #### Rotary Encoder 
 
@@ -187,73 +199,58 @@ Connect it to your pi with Qwiic connector and try running the example script, i
 
 You can go to the [Adafruit Learn Page](https://learn.adafruit.com/adafruit-i2c-qt-rotary-encoder/python-circuitpython) to learn more about the sensor! The sensor actually comes with an LED (neo pixel): Can you try lighting it up? 
 
+</details>
+
 #### Joystick 
 
+We connected the SparkFun Qwiic Joystick to the Raspberry Pi using a Qwiic connector. We ran `joystick_test.py` to observe the joystick’s horizontal and vertical movement, pivot direction, and built-in button press. We attached screenshots of the terminal output and photos of the physical setup. We also included the `joystick_test.py` file and the SparkFun GitHub reference for the sensor.
 
-A [joystick](https://www.sparkfun.com/products/15168) can be used to sense and report the input of the stick for it pivoting angle or direction. It also comes with a button input!
+***Physical setup***
 
-<p float="left">
-<img src="https://cdn.sparkfun.com//assets/parts/1/3/5/5/8/15168-SparkFun_Qwiic_Joystick-01.jpg" height="200" />
-</p>
+<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/b65d53f8-e947-4630-9c98-71eae4cad168" />
 
-Connect it to your pi with Qwiic connector and try running the example script to see what it can do!
 
-```
-(circuitpython) pi@ixe00:~/Interactive-Lab-Hub/Lab 4 $ python joystick_test.py
-```
+***joystick_test.py***
 
-You can go to the [SparkFun GitHub Page](https://github.com/sparkfun/Qwiic_Joystick_Py) to learn more about the sensor!
+<img width="798" height="642" alt="Screenshot (97)" src="https://github.com/user-attachments/assets/b0af883f-18c3-443d-b1ba-1ee2107b4090" />
+
 
 #### Distance Sensor
 
+We connected the SparkFun VCNL4040 proximity sensor to the Raspberry Pi using a Qwiic connector. We ran `qwiic_distance.py` to measure the distance between the sensor and nearby objects. The sensor can detect objects from close range up to approximately 20 cm. We attached screenshots of the terminal output and photos of the physical setup. We also included the `qwiic_distance.py` file and the SparkFun GitHub reference.
 
-Earlier we have asked you to play with the proximity sensor, which is able to sense objects within a short distance. Here, we offer [Sparkfun Proximity Sensor Breakout](https://www.sparkfun.com/products/15177), With the ability to detect objects up to 20cm away.
 
-<p float="left">
-<img src="https://cdn.sparkfun.com//assets/parts/1/3/5/9/2/15177-SparkFun_Proximity_Sensor_Breakout_-_20cm__VCNL4040__Qwiic_-01.jpg" height="200" />
+***Physical Setup***
 
-</p>
+<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/dd7f5f3c-33d5-4f32-bb7b-12b9ed1e72b1" />
 
-Connect it to your pi with Qwiic connector and try running the example script to see how it works!
 
-```
-(circuitpython) pi@ixe00:~/Interactive-Lab-Hub/Lab 4 $ python qwiic_distance.py
-```
+***qwiic_distance.py***
 
-You can go to the [SparkFun GitHub Page](https://github.com/sparkfun/Qwiic_Proximity_Py) to learn more about the sensor and see other examples
+<img width="818" height="915" alt="Screenshot (101)" src="https://github.com/user-attachments/assets/205c035c-229a-4f40-adc9-b0bc4dcf5b9f" />
 
----
+
 
 ### Part C
 ### Servo Actuation
+We connected the SparkFun Servo pHAT to the Raspberry Pi and attached a 9g micro servo to channel 0. The Servo pHAT was powered separately through its USB-C connection so the servo received enough current without using the Raspberry Pi’s 5 V rail. We ran pi_servo_hat_test.py to sweep the servo between different angles and observe its movement. We attached screenshots of the terminal output and photos of the physical setup,
 
-Now that you have explored several forms of sensing, add physical output by learning to control a servo motor. Complete the Servo pHAT setup and basic servo test before beginning your interaction design.
+**Physical Setup**
 
-### Servo Control with SparkFun Servo pHAT
-For this lab, you will use the **SparkFun Servo pHAT** to control a micro servo (such as the Miuzei MS18 or similar 9g servo). The Servo pHAT stacks directly on top of the Adafruit Mini PiTFT (135×240) display without pin conflicts:
-- The Mini PiTFT uses SPI (GPIO22, 23, 24, 25) for display and buttons ([SPI pinout](https://pinout.xyz/pinout/spi)).
-- The Servo pHAT uses I²C (GPIO2 & 3) for the PCA9685 servo driver ([I2C pinout](https://pinout.xyz/pinout/i2c)).
-- Since SPI and I²C are separate buses, you can use both boards together.
-**⚡ Power:**
-- Plug a USB-C cable into the Servo pHAT to provide enough current for the servos. The Pi itself should still be powered by its own USB-C supply. Do NOT power servos from the Pi’s 5V rail.
+<img width="1600" height="1190" alt="image" src="https://github.com/user-attachments/assets/87652435-f3ed-4c9b-8110-ed22bb9e3993" />
 
-<p align="center">
-    <img src="Servo_pHAT.gif" alt="Servo pHAT Demo" width="400"/>
-</p>
 
-**Basic Python Example:**
-We provide a simple example script: `Lab 4/pi_servo_hat_test.py` (requires the `pi_servo_hat` Python package).
-Run the example:
-```
-python pi_servo_hat_test.py
-```
-For more details and advanced usage, see the [official SparkFun Servo pHAT documentation](https://learn.sparkfun.com/tutorials/pi-servo-phat-v2-hookup-guide/all#resources-and-going-further).
-A servo motor is a rotary actuator that allows for precise control of angular position. The position is set by the width of an electrical pulse (PWM). You can read [this Adafruit guide](https://learn.adafruit.com/adafruit-arduino-lesson-14-servo-motors/servo-motors) to learn more about how servos work.
+**pi_servo_hat_test.py**
 
----
+<img width="804" height="404" alt="Screenshot (108)" src="https://github.com/user-attachments/assets/59b6282f-1396-443d-91e0-d00c4e21b056" />
+
+
 
 ### Part D
 ### Physical Interaction Design: Feast Automata
+
+<details>
+<summary><strong>Part D instructions</strong> (click to expand)</summary>
 
 **Feast Automata:** build a device that **transforms ordinary dining rituals into playful physical interactions.** Begin with a familiar experience around eating, drinking, cooking, serving, or sharing food, and explore how sensing and actuation might augment, exaggerate, automate, or reinterpret your dining experience.
 
@@ -283,21 +280,103 @@ Your kit includes these [SparkFun Qwiic OLED screens](https://www.sparkfun.com/p
 
 As you develop your Feast Automata concept, consider where the sensor and actuator need to be placed, what parts move, how electronics are housed, and how the overall form and aesthetics support the interaction.
 
-**\*\*\*Draw 5 sketches that explore different physical arrangements for your sensing and actuation.\*\*\***
+</details>
 
-**\*\*\*What questions do these sketches raise? What do you need to physically prototype to answer them?\*\*\***
+### **Exploring Five Different Design Concepts**
 
-**\*\*\*Pick one design to prototype and explain why.\*\*\***
+- Sketch 1
 
-Build a cardboard or other low-fidelity physical prototype of your design.
+<img width="412" height="615" alt="18974C96-78FA-496D-8CB0-FE07626F782A" src="https://github.com/user-attachments/assets/a3fb0c9b-3bf1-4473-b9de-f9de860da04e" />
+<br></br>
 
-**\*\*\*Document your rough prototype with photos and/or video.\*\*\***
+- Sketch 2
+
+<img width="429" height="614" alt="818C96AB-5F5E-4E73-BC39-96AAA2B0E179" src="https://github.com/user-attachments/assets/9a67ee9c-5454-436a-bf88-9649103c48b3" />
+<br></br>
+
+- Sketch 3
+
+<img width="398" height="621" alt="352F2EB2-EDFC-4F6F-9856-E201FAE08FDF" src="https://github.com/user-attachments/assets/87583ced-3a1c-4c1c-8c31-957d4d1b6e31" />
+<br></br>
+
+- Sketch 4
+
+<img width="632" height="504" alt="B76DDF3D-FFC4-4CAD-BB1A-A5BB2F7CBFE8" src="https://github.com/user-attachments/assets/c5133385-6327-4055-bd11-db160558341f" />
+<br></br>
+
+
+- Sketch 5
+
+<img width="597" height="505" alt="192E23E5-358B-46D2-A522-8156B09A2311" src="https://github.com/user-attachments/assets/80f6f3cc-9e35-472a-bcef-396c7cdfe520" />
+<br></br>
+
+### **Design Questions & Prototyping**
+
+**Mechanical Questions**
+- Servo Torque: Can a 9g servo move the robot smoothly with added components?  
+*Prototype:* Test the bow motion using lightweight cardboard, then add weight to check for stalling or jittering.
+- Stability: Will the robot tip forward while bowing?  
+*Prototype:* Test exaggerated bows with different base weights to determine the minimum ballast needed.
+- Attachment Strength: Which method best secures cardboard to the servo horn?  
+*Prototype:* Compare hot glue, a wooden dowel, and a reinforced cardboard sandwich over 50 bow cycles.
+- Structural Stability: Will the neck and pivot remain stable during movement?  
+*Prototype:* Test the chopstick rest and head assemblies for wobbling, bending, and alignment.
+
+**Sensing Questions**
+- Capacitive Sensing: Can the sensor detect chopsticks through cardboard or paper?  
+*Prototype:* Use `cap_test.py` to compare wooden and plastic chopsticks at different material thicknesses.
+- Food Detection: Can the APDS-9960 distinguish a full plate from an empty one?  
+*Prototype:* Use `color_test.py` to record RGB readings across different foods, plates, and lighting conditions.
+- Gesture Detection: Will normal eating trigger false gestures?  
+*Prototype:* Simulate eating for two minutes and adjust the sensor angle and distance to reduce false triggers.
+- Plate Removal: What distance threshold reliably indicates that a plate has been removed?  
+*Prototype:* Use `qwiic_distance.py` to record readings at different plate positions and determine the threshold and required delay.
+
+**Interaction and Timing Questions**
+- Meal Completion: How long should the robot wait before recognizing the end of a meal?  
+*Prototype:* Time normal eating pauses and test a 15 to 30 second delay to prevent premature bows.
+- Bow Motion: Does a smooth bow feel more respectful than a sudden movement?  
+*Prototype:* Compare an instant bow with a one second eased motion and bottom hold.
+- Visibility: Will diners notice the bow while eating?  
+*Prototype:* Observe a diner interacting with the robot and adjust its position or add a chime if needed.
+
+**Housing and Practical Questions**
+- Cable Management: Can power cables exit cleanly without affecting stability?  
+*Prototype:* Test rear cable routing and check for visual clutter or cable tension.
+- Debugging Access: Can the Raspberry Pi be accessed without damaging the housing?  
+*Prototype:* Test a removable back panel using magnets, tabs, or Velcro.
+
+### Concept Development
+#### **Design Selection**
+
+We chose the Daruma Chef concept because we wanted to create a friendly, character-like robot that communicates through movement. We adapted the design into a chef character with a simple, rounded body and a chef hat to give it a recognizable personality. The neck-pivot mechanism allows the head to tilt forward in a bowing gesture, while sensors enable the robot to respond to user interactions. We chose this concept because it combines expressive movement with a compact design that can house the necessary electronics.
+
+#### **Prototype Documentation**
+
+We built a low-fidelity paper and cardboard prototype to explore the chef’s shape, proportions, and neck-pivot movement. The prototype illustrates how the head could tilt forward to create a bowing gesture while the base remains stationary. We also explored potential placements for the servo, sensors, Raspberry Pi, and speaker within the body. The final design may need to be larger to accommodate the Raspberry Pi and speaker comfortably, while leaving enough room for the wiring and moving mechanism. This early model helped us visualize the physical arrangement and identify adjustments to make before building the functional prototype.
+
+<img width="4158" height="2772" alt="C5CECF6B-1498-46E7-B29D-BF5A9C04A17D" src="https://github.com/user-attachments/assets/3b4f7bcd-3c4c-4228-b501-0cfd2b0ee18c" />
+
+
+
+https://github.com/user-attachments/assets/3d68944a-e549-455f-bda1-a1a16d7366d6
+
+
+
+
+
+
 
 ---
 
 ## Part 2
 
+<details>
+<summary><strong>Part 2 instructions</strong> (click to expand)</summary>
+
 Following exploration and reflection from Part 1, complete the "looks like," "works like" and "acts like" prototypes for your design, reiterated below.
+
+</details>
 
 ---
 
@@ -305,7 +384,37 @@ Following exploration and reflection from Part 1, complete the "looks like," "wo
 
 #### Build & Integrate: Sensing + Actuation
 
-For Part 2, build the Feast Automata interaction you developed in Part D by connecting sensing/input to physical actuation.
+#### Our System
+
+**Code**
+
+- [`bown_appetit.py`](bown_appetit.py): main program (sensing + bow + greeting)
+- [`bow_voice_test.py`](bow_voice_test.py): test script for tuning the voice and bow timing
+
+**Prototype in Action**
+
+https://github.com/user-attachments/assets/6364a119-5136-4fa2-a8af-824b598cbfae
+
+**System Diagram**
+
+<img width="1354" height="476" alt="System diagram" src="https://github.com/user-attachments/assets/e0342d69-0f62-47b3-b046-9525b84bd952" />
+
+**Interaction Flow**
+
+<img width="1374" height="538" alt="Interaction flow" src="https://github.com/user-attachments/assets/750c8809-49f6-49a3-a0ac-437f6603d2fb" />
+
+**Our Reflection**
+
+Building Bown Appétit taught us that sensing, movement, and physical form cannot be designed separately. Our first paper model focused on the chef’s shape and proportions, but it did not fully account for the hardware. Once the circuit was wired, we had to resize the body to a more practical scale that could hold the Raspberry Pi, the speaker, and the wiring while leaving room for the neck pivot to move. Sensing also shaped the form in return. Because the sensor needed to detect chopsticks resting on the table, it had to sit low, at chopstick height. We first planned a pocket at the front of the body, but in the final build we moved the APDS-9960 to the side. This kept the front of the character clean and complete, and it matched where people naturally rest their chopsticks, beside the plate rather than in front of it.
+
+Choosing and tuning the sensor was harder than we expected. Gesture detection did not fit our interaction, because picking up chopsticks is not a clear, consistent hand gesture like a swipe up or down. Color readings shifted with different light sources and gave us only RGB values, which made confident decisions difficult. We ended up combining proximity with ambient light and sorting each reading into present, absent, or uncertain. A hand or a sleeve passing by produces an uncertain reading and resets the timer, and a 0.6-second debounce keeps those moments from triggering a false bow. We also tuned the bow over many iterations so the servo moves smoothly from 45° to 90° in 1° steps instead of snapping into place.
+
+What surprised us most was how much the timing between sound and motion shaped the character. Instead of firing them at the same instant, we let the greeting start first and begin the bow half a second later, then hold the bow briefly after the voice ends before returning upright. This sequence feels closer to how a person speaks and then bows, and it makes the robot read as polite rather than mechanical. 
+
+
+
+<details>
+<summary><strong>Part E instructions, Windmill Coaster example & optional extensions</strong> (click to expand)</summary>
 
 **Your prototype should:**
 - Use at least one sensing or input device.
@@ -474,6 +583,8 @@ python gpio_expander.py
 
 This is a playful way to visualize how the expander works, but the same technique applies if you wanted to prototype buttons, switches, or other interaction elements. It’s a lightweight, flexible addition to your prototyping toolkit.
 
+</details>
+
 ---
 
 
@@ -485,12 +596,43 @@ This is a playful way to visualize how the expander works, but the same techniqu
 
 ### Final Documentation
 
+<details>
+<summary><strong>Part F instructions</strong> (click to expand)</summary>
+
 Document all the prototypes and iterations you have designed and worked on! Again, deliverables for this lab are writings, sketches, photos, and videos that show what your prototype:
 * "Looks like": shows how the device should look, feel, sit, weigh, etc.
 * "Works like": shows what the device can do
 * "Acts like": shows how a person would interact with the device
 
+</details>
+
+### Looks Like
+<img width="1200" height="1600" alt="image000001" src="https://github.com/user-attachments/assets/3500bf9e-6139-4284-a692-ac432d1ed114" />
+
+- A small figure approximately 15 cm tall, built from cardboard and hand-drawn with markers. It has three parts: a white cylindrical chef's hat, a cube-shaped head with hand-drawn round glasses and a smiling mouth, and a larger body drawn as a purple shirt with a collar, buttons, and a pocket.
+- A 9 g micro servo sits at the neck with a hinge, so the head and hat tilt forward together in a bowing gesture while the body stays still.
+- The Raspberry Pi, Servo pHAT, and speaker are housed inside the body. The APDS-9960 sensor is mounted on the side of the body at chopstick height, facing the chopsticks that rest beside the figure, which keeps the front of the character clean.
+
+### Works Like
+
+<img width="1924" height="984" alt="image" src="https://github.com/user-attachments/assets/0d37b36c-7e85-471e-bd0e-e141813a1051" />
+<img width="1200" height="1600" alt="image000000" src="https://github.com/user-attachments/assets/04421fe5-fbfc-4741-9126-82f2185aeaf5" />
+
+- The APDS9960 continuously reads proximity and ambient light values to detect whether chopsticks are resting in their holder. The system classifies each reading as `present`, `absent`, or `uncertain`, using a 0.6-second debounce period to prevent false triggers from passing hands or clothing.
+- Once the chopsticks are picked up and their absence is confirmed, the Raspberry Pi plays `ittadakimasu.mp3` in a background thread. Half a second after the greeting begins, the servo smoothly moves from 45° (upright) to 90° (bowed) in 1° increments.
+- After the audio finishes and a brief pause, the servo returns to its upright position. The system then waits for the chopsticks to be returned before resetting, ensuring one bow per meal rather than repeated movements.
+
+### Acts Like
+https://github.com/user-attachments/assets/0b82d609-d26f-45f0-b622-1e38813c8d34
+
+- The interaction is entirely touch-free and rooted in ritual. The user simply picks up their chopsticks to begin eating, and Bown Appétit responds like a tiny dining companion, acknowledging the Japanese custom of saying *itadakimasu* before a meal.
+- It is designed to feel polite and patient. The device waits until it detects the chopsticks in their holder, then responds only when they are removed. This makes the interaction feel intentional rather than reactive to every movement around the table.
+- Returning the chopsticks quietly resets the device without another sound or gesture. Bown Appétit is present when the moment calls for it and unobtrusive the rest of the time.
+
 ---
+
+<details>
+<summary><strong>Deliverables & Submission instructions</strong> (click to expand)</summary>
 
 ## Deliverables \& Submission for Lab 4
 
@@ -503,3 +645,6 @@ For submission, the readme.md page for this lab should be edited to include the 
 * Upload any materials that explain what you did, into your lab 4 repository, and link them in your lab 4 readme.md.
 * Link your Lab 4 readme.md in your main Interactive-Lab-Hub readme.md. 
 * Labs are due on Mondays, make sure to submit your Lab 4 readme.md to Canvas.
+
+</details>
+
