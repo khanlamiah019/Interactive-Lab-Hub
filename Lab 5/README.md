@@ -1,93 +1,451 @@
-# Legacy sense-making tools
+# Observant Systems: Overnight Sensation
 
-> **Note:** Everything in this folder is from earlier versions of Lab 5 and is **optional**. These tools were replaced in the main lab by YOLO (object detection) and Qwen through Ollama (language and vision-language), but the code still runs on the Pi 5 and may be exactly the sensor your night-time interaction needs. The Pi deployment packages for some of them (TensorFlow Lite in particular) are no longer maintained, so expect to do some fixing if you use them.
->
-> Install their dependencies into the Lab 5 virtual environment with `pip install -r legacy/requirements.txt`, and run the scripts from inside this folder. The windowed demos need VNC, not a plain ssh session.
+**Team:** LACK   <br>
+**Members:** Rawisara Chairat (rc2239, kmkluaymaii), Lamiah Khan (ltk38, khanlamiah019), Afroza Aktar (aa2995, Afrozaktar), Xiaoxi Xu (xx373, xuxx21) <br>
+**Project name:** Moonlight
 
-| tool | script | what it does | status |
-|---|---|---|---|
-| MobileNet v2 (PyTorch) | `infer.py` | one label per frame from 1000 ImageNet classes, 30 fps on the CPU | works; superseded by YOLO, which also localizes and counts |
-| Moondream | `moondream_simple.py` | describe a webcam photo in natural language | works; the Ollama build is moondream2 from 2024. `qwen3.5:0.8b` does the same job and is newer |
-| Teachable Machine | `tml_example.py`, `model.tflite`, `labels.txt` | run a classifier you trained in the browser | the web tool is current; the Pi package depends on `tflite-runtime`, unmaintained since 2023 |
-| Audio FFT and thresholds | `Audio_optional/` | loudness, peaks and frequency content from a microphone | works; a very cheap overnight sensor |
-| Classic OpenCV | `CV_optional/` | contours, Haar-cascade faces, optical flow, SSD object detection | works; frame differencing and flow make good "is anything happening" gates |
+# Part 1
 
-`converted_tflite_quantized/` is a leftover export from an earlier Teachable Machine model and can be ignored.
+### Part A: On-Device AI Setup
 
-## Pytorch for object recognition
+For Part A, we prepared the Raspberry Pi 5 to run artificial-intelligence models locally. We created a Python virtual environment and installed the required packages from `requirements.txt`, including Ultralytics YOLO and its dependencies. We downloaded the YOLO26 nano model and exported it to NCNN format so that it could run more efficiently on the Raspberry Pi. We tested the model on an example image and generated an annotated output image with bounding boxes around the detected objects. We also installed Ollama and downloaded the `qwen3.5:0.8b` and `qwen3:0.6b` language models. These models run directly on the Raspberry Pi without sending data to an external server. YOLO is used to observe the environment, while Qwen interprets and describes the observations. We included a screenshot of the installed models using `ollama list` and saved the generated detection images as evidence.
 
-For this demo, you will be using PyTorch and running a MobileNet v2 classification model in real time (30 fps+) on the CPU. We will be following steps adapted from [this tutorial](https://pytorch.org/tutorials/intermediate/realtime_rpi.html).
+**Original webcam image**
 
-![torch](Readme_files/pyt.gif)
+<img width="640" height="480" alt="snap_original" src="https://github.com/user-attachments/assets/eb1a182e-5dcd-47ee-b10d-5b825ba54d0d" />
 
-Make sure your webcam is connected.
+**YOLO annotated image**
 
-You can check the installation by running:
+<img width="640" height="480" alt="snap_box" src="https://github.com/user-attachments/assets/e3db542c-4b30-4d08-921b-d7184387834f" />
+
+**OLAMA list**
+
+<img width="826" height="464" alt="image" src="https://github.com/user-attachments/assets/ba39a87e-9cbf-408c-8510-444b1845252f" />
+
+\*\*\***Include a screenshot of `ollama list` showing your models.**\*\*\*
+
+
+### Part B: Person-Detection Experiments
+
+We included a short video showing our person-detection experiments with YOLO running on the Raspberry Pi. The video shows the camera detecting a person, displaying a bounding box, and reporting the confidence score in the terminal. We tested different positions and movements to observe how the detector responded.
+
+The detector did not always work perfectly. First, when we moved farther away from the camera, the person was sometimes missed because the person occupied fewer pixels in the image. Second, when we turned sideways or became partially hidden, the detector became less confident because less of the body was visible. Third, when we showed a photograph of a person, YOLO could recognize it as a person even though nobody was physically standing there. This happened because the model detects visual patterns that look like a person; it does not know whether the person is real or only printed in a photograph.
+
+**The video is added inside lab 5 folder named 'Part_B.mp4'**
+
+\*\*\***Include a short video or screenshots of your experiments with the person detection. Write down three situations where it did not see you, or saw a person who was not there, and what you think the cause was.**\*\*\*
+
+### Part C: MediaPipe Hand-Pose Experiment
+
+We included a short video of the MediaPipe hand-pose demo running on the Raspberry Pi. The video shows the webcam detecting the hand and placing colored landmark points over the fingers and face. The system tracks the hand continuously while displaying the processing speed in frames per second. As the hand moves near the face and the fingers change position, the landmark points move with it. This demonstrates that MediaPipe can identify hand locations and use their positions to recognize gestures.
+
+**Possible Use in Our Observant System**
+
+We could use hand-pose tracking as a touch-free control for our observant overnight system. For example, a raised hand could start monitoring before bed, a closed hand could pause the system, and a specific gesture such as a pinch or Quiet Coyote could confirm a command. Hand gestures would be useful when the user does not want to touch the Raspberry Pi or speak aloud. Face tracking could also detect whether a person is present and whether they are looking toward the device, while body-pose tracking could recognize activities such as sitting, standing, walking, or falling. These pose-based readings could be saved in the night log and summarized by Qwen in the morning.
+
+**We uploaded the video named 'Part_C.mp4' to the Lab 5 GitHub repository**
+
+
+\*\*\***Include a screenshot or short video of the hand pose demo, and write how you might use face, hand or body pose tracking in your observant system.**\*\*\*
+
+### Part D: Qwen Results
+
+We ran Qwen locally on the Raspberry Pi using Ollama with reasoning disabled. The `qwen3.5:0.8b` model answered the Roosevelt Island question in **11.2 seconds**, but its answer was mostly incorrect because it invented historical information. The smaller `qwen3:0.6b` model answered three ways a Raspberry Pi could observe a room in **9.8 seconds**, giving reasonable examples such as cameras, motion sensors, and environmental sensors. Finally, `qwen3.5:0.8b` analyzed `snap.jpg` in **35.8 seconds** and correctly described the person, mask, hospital gown, couch, and wallpaper. This showed that Qwen can analyze text and images locally, but it can also produce incorrect information. When Qwen is unsure, the device should say that it is uncertain instead of presenting an invented answer as fact.
+
+<details>
+
+#### Question 1
+
+**Question:** Tell me a bit about the history of Roosevelt Island.  
+**Model:** `qwen3.5:0.8b`  
+**Time:** 11.2 seconds  
+
+**Answer:** Roosevelt Island was originally built as a private residence for President Franklin D. Roosevelt after his inauguration. It is now a historic landmark and tourist destination known for scenic views and the Roosevelt Island Bridge.
+
+**Evaluation:** This answer was mostly incorrect because the model invented historical information. It did not correctly mention Blackwell’s Island, Welfare Island, the 1973 renaming, or Cornell Tech.
+
+#### Question 2
+
+**Question:** What are three ways a Raspberry Pi can observe a room?  
+**Model:** `qwen3:0.6b`  
+**Time:** 9.8 seconds  
+
+**Answer:** The Raspberry Pi can use cameras or motion sensors, monitor temperature and humidity, and collect information about user activity.
+
+**Evaluation:** This answer was reasonable. The smaller model was faster than the `qwen3.5:0.8b` model.
+
+#### Question 3
+
+**Question:** What is in this photo?  
+**Model:** `qwen3.5:0.8b`  
+**Image:** `snap.jpg`  
+**Time:** 35.8 seconds  
+
+**Answer:** A person wearing a black face mask and a hospital gown is sitting on a brown leather couch against floral wallpaper.
+
+**Evaluation:** This answer was mostly correct because it matched the main contents of the photograph.
+</details>
+
+\*\*\***Ask Qwen three questions to answer. Paste the questions, the answers and how long each took. Try one of them with `qwen3:0.6b` and compare.**\*\*\*
+
+### Part E: YOLO-to-Qwen Pipeline
+
+We connected the YOLO person detector to Qwen through a complete observation pipeline. YOLO detected people in the camera image, and the interpreter converted each detection into a text description containing the number of people, their position, and their distance from the camera. The system saved only changes in the scene to `watch_log.txt`. Qwen then used this text log to summarize what happened during the observation period. In our experiment, the system detected nobody, one person, and two people at different positions and distances. We also included the terminal screenshot, observation log, and complete program output as evidence. We uploaded the two Part E files, watch_log.txt and part_e_results.txt, inside the Part_E folder.
+
+Files: [`watch_log.txt`](watch_log.txt), [`part_e_results.txt`](part_e_results.txt),
+
+
+**observation log**
+
+<img width="852" height="974" alt="image" src="https://github.com/user-attachments/assets/8b486f2b-0d8f-4080-8a03-0f0d5709b68c" />
+
+
+# Lab 5 Part 2: Overnight Sensation
+<details>
+<summary>Instruction (click to expand)</summary>
+For Part 2, you will use the observant system from Part 1 to design a night-time interaction. On-device AI is slow, so let it work while you sleep. The person meets the device twice: **before bed**, when they hand the night over, and **when awake**, when the device gives something back. In between, the pipeline from Part E runs on its own.
+
+Two flavors, pick one or mix them:
+
+* **Sense all night.** The Pi watches, listens or measures from bedtime until morning and keeps a log.
+* **Process all night.** You already have the data (a day of phone photos, a long recording) and the Pi needs hours to get through it.
+
+Two house rules. Sample rather than stream: one look every 5 to 30 seconds is plenty, and it keeps the Pi cool. And keep everything on the Pi: tell the people you live with, point the camera at things rather than at beds, and delete the snapshots after the demo.
+</details>
+
+## Part F.
+### Storyboard our night-time interaction
+<details>
+<summary>Instruction (click to expand)</summary>
+### Read Part 2 and storyboard your night-time interaction
+
+Storyboard a night-time interaction built on your observant system, in three panels:
+
+1. **Before bed.** How does the person hand the night over, and how does the device acknowledge it?
+2. **While asleep.** What does the device watch or work through?
+3. **When awake.** What is the one thing the person learns, and in what medium?
+
+Stuck? A kitchen that tells you who raided the fridge. A desk that reports whether you actually went to bed. A window that names the quietest hour. A plant that describes its night. Find something better.
+
+Use storyboards and/or [Verplank diagrams](https://ccrma.stanford.edu/courses/250a-fall-2004/IDSketchbok.pdf).
+</details>
+
+For our project, we are creating a moonlight-inspired bedside device that tracks nighttime phone use to help people understand their doomscrolling habits. Before bed, the user activates the tracker with a voice command, and the device monitors for phone use throughout the night. If phone use lasts longer than five minutes, it starts a timer and logs the session until the phone is put down, repeating this process overnight without saving photos or videos. In the morning, the user presses a button to receive a summary of how many times they doomscrolled and how long each session lasted, helping them reflect on their sleep habits.
+
+Storyboard: 
+<img width="1163" height="580" alt="Screenshot 2026-10-28 at 5 05 17 PM" src="https://github.com/user-attachments/assets/9c58a03a-cdd8-4b00-a379-9f541eff6b6a" />
+
+Block diagram of Moonlight Device: 
+<img width="928" height="461" alt="Screenshot 2026-10-28 at 5 09 46 PM" src="https://github.com/user-attachments/assets/3a0c5289-e7fc-47a8-be21-354958a32c47" />
+
+
+## Prep for Part 2
+
+1. **Feedback on the Part F storyboards:**
+   - Jessica Chon (GitHub: https://github.com/chonjessica23/Interactive-Lab-Hub/blob/Fall2026/Lab%205/README.md): I think your idea   is pretty useful, and the overall process seems pretty straightforward! My only question is how are you guys tracking the phone? Are you attaching sensors to it or using the models? Because my first question was wondering how would you distinguish the user from reading a book for example.
+
+   - Jianing Li: I love the interaction you designed especially the little moonlight lamp! I'm curious why did you set the 5-minute wait because if I pick up an scroll my phone for 5 minutes only, it might not be able to detect. And also, you might need to think more detailed about how your system detects the pick-up and put-down action, like maybe sample once every 10 seconds to see if the phone's still there or not?
+
+2. The device will **live in Rawisara and Xiaoxi's apartment in the House**, near their bed side table so it can track their phone correctly.
+   
+3. **Revise our storyboard with the feedback:**
+Jessica suggested clarifying how we distinguish phone use from reading a book, so we will point Moonlight’s camera at a designated phone spot on the nightstand and use YOLO to detect whether a phone is present. Jianing questioned the five-minute wait and how we detect pickup and put-down actions, so we will sample the spot every 10 seconds throughout the night. When the phone disappears, we will record a potential phone-use session, and when it returns and stays in place, we will log the session’s duration. Sessions lasting at least five minutes will be flagged as potential doomscrolling, rather than waiting five minutes to begin tracking. We will keep the Moonlight lamp, voice activation before bed, overnight logging, and morning summary. To protect privacy, all processing will happen locally, and we will save session times and durations instead of photos or videos.
+
+**Our revised storyboard:**
+
+
+<img width="789" height="519" alt="Screenshot 2026-10-29 at 5 56 21 PM" src="https://github.com/user-attachments/assets/d10ca14d-4ceb-4376-8731-0640c3a3ee45" />
+
+
+## Part G. 
+### Design the interaction before
+<details>
+<summary>Instruction (click to expand)</summary>
+
+The hand-off: the person tells the device what to watch tonight, and the device acknowledges it. Keep it to a thirty-second ritual. A button or a touch (Lab 4), a spoken sentence (Lab 3), a wave or a Quiet Coyote at the camera (Part C). The acknowledgement can be a line on the display, a tone, or an LED that dims rather than lights up. At its simplest, the hand-off just sets the question that the morning will answer.
+</details>
+
+**The interaction before.**
+1. User places phone
+- Places phone in the designated spot on the nightstand.
+
+2. User activates Moonlight
+- Presses the button and says: “It's time to sleep. Track my nighttime phone use.”
+
+3. Moonlight acknowledges
+- Moonlight: “Got it! I'll check your phone spot every 10 seconds and summarize your nighttime phone use in the morning.”
+- The crescent moon LED softly dims to indicate tracking has started.
+  
+4. The night begins
+- Moonlight monitors the designated phone spot throughout the night.
+- Morning question: How often and how long did I use my phone last night?
+<img width="573" height="479" alt="Screenshot 2026-10-29 at 6 03 48 PM" src="https://github.com/user-attachments/assets/9126448f-7479-428c-97b5-f9ae743db7b4" />
+
+## Part H. 
+### Incorporate the observant system
+<details>
+<summary> Instruction (click to expand)</summary>
+
+<br>
+
+The Part E pipeline becomes the night shift. `overnight.py` runs your `interpret()` from `yolo_to_qwen.py` every few seconds, people only unless you pass `--all`, and writes the readings to `night_log.jsonl`; the reasoning waits for the morning. Start it inside `tmux` so it keeps running after you close your laptop, and stop it with Ctrl-C in the morning:
 
 ```
-python -c "import torch; print(torch.__version__)"
+(.venv) pi@raspberrypi:~/Interactive-Lab-Hub/Lab 5 $ tmux new -s night
+(.venv) pi@raspberrypi:~/Interactive-Lab-Hub/Lab 5 $ python overnight.py
 ```
 
-If everything is ok, you should be able to start doing object recognition. For this default example, we use [MobileNet_v2](https://arxiv.org/abs/1801.04381). This model is able to perform object recognition for 1000 object classes (check [classes.json](classes.json) to see which ones).
+Fake a night first: run it for thirty seconds while you walk around, stop it, and run `morning.py` from Part I. When that looks right, run a real night. If your storyboard needs a sensor rather than the camera, swap in the Lab 4 example code and log its reading the same way.
 
-Start detection by running  
+\*\*\***Screenshots or videos of the running system.**\*\*\*
 
-```
-(.venv) pi@raspberrypi:~/Interactive-Lab-Hub/Lab 5/legacy $ python infer.py
-```
+</details>
 
-The first 2 inferences will be slower. Now, you can try placing several objects in front of the camera.
+Our updated implementation uses `doomscroll_detector_group.py` to detect when the phone is removed from its resting spot.
 
-Read the `infer.py` script and become familiar with the code. You can change the video resolution and frames per second (FPS). You may also use the weights of the larger pre-trained mobilenet_v3_large model, as described [here](https://pytorch.org/tutorials/intermediate/realtime_rpi.html#model-choices).
+We use YOLO to monitor whether the phone is present at its designated resting spot. The camera samples the scene every 5 seconds, and the system tracks how long the phone remains absent. If the phone is away for longer than the configured threshold, the session is flagged as possible doomscrolling.
 
-### More classes
+The system records timestamps, session durations, and detection events in JSONL and text logs inside the night_logs/ folder. No images or videos are saved.
 
-[PyTorch supports transfer learning](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html), so you can fine‑tune and transfer learn models to recognize your own objects. It requires extra steps, so we won't cover it here.
+Our current configuration uses a 0.5-minute threshold for testing, which can be changed to 7 minutes for overnight use.
 
-For more details on transfer learning and deployment to embedded devices, see Deep Learning on Embedded Systems: A Hands‑On Approach Using Jetson Nano and Raspberry Pi (Tariq M. Arif). [Chapter 10](https://onlinelibrary.wiley.com/doi/10.1002/9781394269297.ch10) covers transfer learning for object detection on desktop, and [Chapter 15](https://onlinelibrary.wiley.com/doi/10.1002/9781394269297.ch15) describes moving models to the Pi using ONNX.
 
-## Moondream Vision-Language Model
+**How to run the detector independently:**
 
-[Moondream](https://www.ollama.com/library/moondream) is a lightweight vision-language model that can understand and answer questions about images. Unlike the classification models above, Moondream can describe images in natural language and answer specific questions about what it sees. `qwen3.5:0.8b`, which you install in Part A of the lab, does the same job with a newer model; change the model name in `moondream_simple.py` and the script works with it.
-
-To use Moondream, first make sure Ollama is running and pull the model:
 ```bash
-ollama pull moondream
+python doomscroll_detector_group.py \
+  --model yolo26n_ncnn_model \
+  --interval 5 \
+  --threshold-minutes 0.5 \
+  --jsonl doomscroll_log.jsonl \
+  --text-log doomscroll_log.txt
+```
+The detector can also be started automatically through `bedside_controller.py` as part of the complete system, as described in the Final Documentation section.
+
+
+### Demo: Simulated Nighttime Monitoring
+
+To test the system without running it overnight, we simulated a nighttime session by placing a phone in its designated resting spot, removing it to simulate phone use, and returning it to the spot.
+
+The demo shows how `doomscroll_detector_group.py` detects phone absence, tracks its duration, and records possible doomscrolling events when the threshold is exceeded.
+
+**Video demonstration:**
+
+https://github.com/user-attachments/assets/fcfcd453-4e20-4024-b035-c5f444a12ca5
+
+
+
+
+## Part I. 
+### Design the interaction after
+<details>
+<summary> Instruction (click to expand)</summary>
+
+<br>
+
+The reveal. The night produced a log; the morning turns it into something a half-awake person can take in. `morning.py` is the smallest version: it asks Qwen for a three-sentence report.
+
+```
+(.venv) pi@raspberrypi:~/Interactive-Lab-Hub/Lab 5 $ python morning.py
 ```
 
-Then run the simple demo script:
+Make it yours: show the report on the Mini PiTFT, read it aloud with Piper from Lab 3, plot the night as a timeline, or ask for JSON (`--json`, Part D) and move a servo. Whatever you pick, make sure it is honest about a night in which nothing happened.
+</details>
+
+Our updated implementation uses `morning.py` to generate and speak a morning report based on the phone activity recorded overnight.
+
+The script reads the JSONL log generated by `doomscroll_detector_group.py` and calculates the total number of phone-away sessions, the total time the phone was away, and the number of sessions flagged as possible doomscrolling.
+
+We use Qwen (`qwen3.5:0.8b`) to generate a short, playful closing sentence, while Python handles the factual portion of the report to ensure accuracy. Piper TTS then converts the complete report into speech and plays it through the speaker.
+
+The generated report is saved as `morning_report.txt` and the audio is saved as `morning_report.wav`.
+
+**How to run the morning report independently:**
+
 ```bash
-(.venv) pi@raspberrypi:~/Interactive-Lab-Hub/Lab 5/legacy $ python moondream_simple.py
+python morning.py \
+  --log "night_logs/doomscroll_YYYYMMDD_HHMMSS.jsonl" \
+  --model qwen3.5:0.8b
 ```
 
-This will capture an image from your webcam and let you ask questions about it in natural language. Note that vision-language models are slower than classification models (responses may take up to minutes on a Raspberry Pi). There are newer models like [LFM2-VL](https://huggingface.co/LiquidAI/LFM2-VL-450M-GGUF), but many are very recent and not yet optimized for embedded devices.
+Replace `YYYYMMDD_HHMMSS` with the timestamp of the recorded nighttime session.
 
-**Design consideration**: Think about how slower response times change your interaction design. What kinds of observant systems benefit from thoughtful, delayed responses rather than real-time classification? Consider systems that monitor over longer time periods or provide periodic summaries rather than instant feedback.
+The report is also triggered automatically through `bedside_controller.py` as part of the complete system, as described in the Final Documentation section.
 
-## Teachable Machines
+## Final documentation
 
-Google's [TeachableMachines](https://teachablemachine.withgoogle.com/train) is very useful for prototyping with the capabilities of machine learning. We are using [a python package](https://github.com/MeqdadDev/teachable-machine-lite) with tensorflow lite to simplify the deployment process.
+<details>
+<summary>Instruction (click to expand)</summary>
 
-![Tachable Machines Pi](Readme_files/tml_pi.gif)
+<br>
 
-Connect your webcam to your Pi and use **VNC to access to your Pi**, open the terminal, and go to this folder and run the example script:
-(***it will not work if you use ssh from your laptop***)
+Document all the prototypes and iterations you have designed and worked on. The deliverables for this lab are writings, sketches, photos, and videos that show what your system:
 
+* "Looks like": how the device sits in the room at night, and what it looks like at bedtime and in the morning.
+* "Works like": the pipeline from detector to interpreter to log to reasoner, with a real night's data.
+* "Acts like": how a person hands the night over and what they get back.
+
+\*\*\***Include a short video of the whole system**\*\*\*
+
+As always, make sure you document contributions and ideas from others (and AI) explicitly in your writeup.
+
+You are permitted (but not required) to work in groups and share a turn in; you are expected to make equal contribution on any group work you do, and N people's group project should look like N times the work of a single person's lab. Make sure the page for the group turn in is linked to your personal Interactive Lab Hub page.
+</details>
+
+### Final Prototype: Looks Like
+
+Our final prototype is a bedside companion designed to help users reflect on their nighttime phone habits without requiring them to manually track their screen time.
+
+The system consists of a Raspberry Pi 5, a camera pointed toward a designated phone resting spot, a SparkFun Qwiic Button with an LED indicator, and a speaker for the morning report.
+
+Before going to sleep, the user places their phone in the designated spot and presses the button to start monitoring. The LED turns on to indicate that the system is active. In the morning, pressing the button again stops monitoring and triggers the spoken report.
+
+**Final prototype:**
+
+<img width="797" height="545" alt="Screenshot 2026-10-31 at 5 36 32 PM" src="https://github.com/user-attachments/assets/815e8a6f-4267-4b4c-9ecb-9f69315ba12d" />
+
+
+### System Workflow: Works Like
+
+Our system uses three main Python scripts:
+
+- `bedside_controller.py`: Manages the Qwiic Button, LED indicator, and transitions between nighttime monitoring and morning reporting.
+- `doomscroll_detector_group.py`: Uses YOLO to detect whether the phone is present at its resting spot and records phone-away sessions.
+- `morning.py`: Processes the recorded data, generates a morning report using Python and Qwen, and converts it into speech using Piper TTS.
+
+The system follows this workflow:
+
+1. **Start monitoring:** The user presses the Qwiic Button, which launches the YOLO detector and turns on the LED.
+2. **Detect phone activity:** YOLO checks the phone's resting spot every 5 seconds. Once the phone has been detected initially, the system tracks subsequent periods when it is absent.
+3. **Record observations:** The detector stores timestamps, session durations, and possible doomscrolling events in JSONL and text logs.
+4. **Stop monitoring:** The user presses the button again in the morning, stopping the detector and turning off the LED.
+5. **Generate morning report:** Python calculates the recorded statistics, Qwen generates a playful closing sentence, and Piper reads the complete report aloud.
+
+The system uses a **0.5-minute threshold for testing**, which can be changed to 7 minutes for overnight monitoring. Phone absence is treated as an indicator of possible phone use rather than proof of doomscrolling.
+
+Only event logs are saved; no camera images or videos are stored by the detector.
+
+**How to run the complete system:**
+
+```bash id="2v78zk"
+python -u bedside_controller.py
 ```
-(.venv) pi@raspberrypi:~/Interactive-Lab-Hub/Lab 5/legacy $ python tml_example.py
-```
 
-Next train your own model. Visit [TeachableMachines](https://teachablemachine.withgoogle.com/train), select Image Project and Standard model. The Raspberry Pi 5 is capable to run not just the low resource models. Second, use the webcam on your computer to train a model. *Note: It might be advisable to use the pi webcam in a similar setting you want to deploy it to improve performance.*  For each class try to have over 150 samples, and consider adding a background or default class where you have nothing in view so the model is trained to know that this is the background. Then create classes based on what you want the model to classify. Lastly, preview and iterate. Finally export your model as a 'Tensorflow lite' model. You will find an '.tflite' file and a 'labels.txt' file. Upload these to your pi (through one of the many ways such as [scp](https://www.raspberrypi.com/documentation/computers/remote-access.html#using-secure-copy), sftp, [vnc](https://help.realvnc.com/hc/en-us/articles/360002249917-VNC-Connect-and-Raspberry-Pi#transferring-files-to-and-from-your-raspberry-pi-0-6), or a connected visual studio code remote explorer).
-![Teachable Machines Browser](Readme_files/tml_browser.gif)
-![Tensorflow Lite Download](Readme_files/tml_download-model.png)
+### User Interaction: Acts Like
 
-Teachable Machine is a quick way to make a classifier for *your* night: "lights on / lights off", "door open / door closed", "cat on the couch / no cat".
+The interaction is designed to be simple and require minimal effort from the user.
 
-## Legacy audio and computer vision observation approaches
+**Before bed:** The user places their phone in the designated spot and presses the Qwiic Button. The LED turns on, signaling that the system is monitoring.
 
-In an earlier version of this class students experimented with observing through audio cues. Find the material here:
-[Audio_optional/audio.md](Audio_optional/audio.md). 
-Teachable machines provides an audio classifier too. If you want to use audio classification this is our suggested method. For an overnight system, the simple RMS loudness and peak detection in that material is a very good, very cheap sensor.
+**During the night:** The system quietly monitors whether the phone is present and records periods when it is removed from its resting spot.
 
-In an earlier version of this class students experimented with foundational computer vision techniques such as face and flow detection. Techniques like these can be sufficient, more performant, and allow non discrete classification. Find the material here:
-[CV_optional/cv.md](CV_optional/cv.md). Frame differencing and optical flow are ideal "is anything happening" gates in front of a slow model.
+**In the morning:** The user presses the button again. The LED turns off, and the system automatically generates a spoken summary of the previous night's phone activity.
+
+Instead of requiring the user to look through logs or statistics, the system communicates the results through a short, friendly morning report.
+
+
+### Testing and Iteration
+
+We tested the system by simulating nighttime phone activity, placing the phone in its designated resting spot, removing it for different durations, and returning it to observe how the system detected and recorded phone-away sessions.
+
+Throughout testing, we identified two main issues: incorrect phone detection logic and inaccurate AI-generated morning reports. We refined both components to improve the overall reliability of the system.
+
+#### Iteration 1: Correcting the Phone Detection Logic
+
+During our initial testing, we noticed that the detection logic was reversed. The system interpreted the phone being present at its resting spot as possible doomscrolling, even though this should indicate that the user was not actively using their phone.
+
+To address this, we updated `doomscroll_detector_group.py` to correctly interpret the phone's presence:
+
+- **Phone present:** The phone is resting in its designated spot, so no time is counted.
+- **Phone absent:** The phone has been removed from its resting spot, so the system begins tracking its absence.
+- **Phone returned:** The system stops tracking and records the session duration.
+
+We also added a check to ensure that the phone is initially detected at its resting spot before the system starts tracking its absence. This prevents false sessions from being recorded before the phone has been placed down.
+
+With these changes, the system now tracks **how long the phone is away from its resting spot**, rather than how long it remains there.
+
+#### Iteration 2: Improving the Accuracy of the Morning Report
+
+After correcting the detection logic, we tested the morning report using the recorded phone-away sessions.
+
+During one simulated test, the system recorded:
+
+- **Phone-away sessions:** 2
+- **Total phone-away time:** 1.0 minute
+- **Possible doomscrolling sessions:** 1
+- **Doomscrolling threshold:** 0.5 minute
+
+However, we noticed that Qwen sometimes generated inaccurate summaries, even when the correct statistics were provided.
+
+In our initial implementation, Qwen was responsible for generating the entire morning report. Despite recording **1 session exceeding the 0.5-minute threshold**, the model incorrectly reported that no sessions had crossed the threshold.
+
+**Before: Initial Qwen-generated report**
+
+<img width="848" height="150" alt="Initial morning report with incorrect threshold interpretation" src="https://github.com/user-attachments/assets/f89e7402-4f46-4101-a7f1-197dab5c96dd" />
+
+To address this issue, we modified `morning.py` to separate factual reporting from language generation.
+
+Instead of asking Qwen to interpret and summarize all the statistics, Python now calculates and formats the factual portion of the report directly from the JSONL log.
+
+We also updated the Qwen prompt so that the model is only responsible for generating one short, playful closing sentence. The prompt explicitly instructs the model not to modify statistics, invent events, or claim that actual scrolling was observed.
+
+**After: Improved report generation**
+
+<img width="1706" height="358" alt="Updated morning report with correct statistics and Qwen-generated closing" src="https://github.com/user-attachments/assets/b2b2cca3-9bc6-481c-b4aa-1419b4f00802" />
+
+With this change, the report correctly identifies that **1 session crossed the threshold for possible doomscrolling**, while Qwen still provides a playful closing sentence.
+
+This iteration improved the reliability of the system by separating **factual calculations (Python)** from **natural language generation (Qwen)**, reducing the risk of inaccurate AI-generated information.
+
+
+### Full System Demonstration
+
+The following demonstration shows the complete interaction, from starting nighttime monitoring with the Qwiic Button to detecting phone absence and generating the spoken morning report.
+
+#### Video demonstration:
+
+
+
+https://github.com/user-attachments/assets/49106251-219b-4c27-80a6-be0d86028033
+
+
+#### Overnight Test — October 30, 2026
+
+We ran Moonlight from **2:30:03 AM to 8:34:43 AM**, approximately **6 hours and 5 minutes**. The camera sampled the phone’s resting spot every **5 seconds**, using a **30-second testing threshold** for possible doomscrolling.
+
+| Metric | Recorded Result |
+|---|---:|
+| Phone-away sessions | 15 |
+| Total recorded phone-away time | 359.6 minutes |
+| Sessions meeting the testing threshold | 10 |
+| Final continuous absence | 290.7 minutes |
+
+The system stopped normally and saved the event logs. The morning report summarized the recorded sessions using Python-calculated statistics, a Qwen-generated closing sentence, and Piper speech output.
+<img width="935" height="818" alt="Screenshot 2026-10-30 at 9 11 58 AM" src="https://github.com/user-attachments/assets/021f47ff-d4f1-4ea8-80fd-32d61b9d043e" />
+<img width="936" height="771" alt="Screenshot 2026-10-30 at 9 12 28 AM" src="https://github.com/user-attachments/assets/be104084-1237-43de-9eb3-480b68201360" />
+
+
+##### Observation: Low-Light Detection Failure
+
+I likely turned off the room light around the beginning of the final prolonged absence, at approximately 3:44 AM. Reduced visibility may have prevented YOLO from detecting the phone, causing the system to interpret it as removed from its resting spot.
+
+The final absence continued until monitoring stopped at 8:34 AM. Its end reason was `monitor_stopped`, rather than `phone_returned`. Therefore, the recorded 290.7-minute absence does not establish that the phone was being used during that time.
+
+This test exposed an important limitation: the current system cannot reliably distinguish **phone removal** from **failed detection in darkness**. The recorded absence durations should not be treated as confirmed phone-use or scrolling time.
+
+
+## Deliverables & Submission for Lab 5
+
+For submission, the readme.md page for this lab should be edited to include the work you have done:
+* Upload any materials that explain what you did, including your code and night log, into your Lab 5 repository, and link them in your Lab 5 readme.md.
+* Labs are due on Sundays, make sure to submit your Lab 5 readme.md to Canvas.
+
+<details>
+  <summary><strong>Submission Cleanup Reminder (Click to Expand)</strong></summary>
+
+  **Before submitting your README.md:**
+  - This readme.md file has a lot of extra text for guidance.
+  - Remove all instructional text and example prompts from this file.
+  - You may either delete these sections or use the toggle/hide feature in VS Code to collapse them for a cleaner look.
+  - Your final submission should be neat, focused on your own work, and easy to read for grading.
+</details>
